@@ -3,7 +3,7 @@ from torch import nn
 from torch.optim import Adam
 import copy
 from src.hnet_lib.hnet import HyperNetwork
-from src.vit.model_pretrained import PreTrainedViT
+from src.vit.pretrained.model import PreTrainedViT
 from utils.dataloaders import get_split_cifar10_dataloaders, get_split_cifar100_dataloaders
 
 
@@ -81,8 +81,6 @@ class PreTrainedViTManager():
 
             self.optimizer.step()
 
-            break
-
         return train_loss / len(dataloader), train_acc / len(dataloader)
 
     def test_task(self, dataloader, task_embedding=None):
@@ -111,8 +109,6 @@ class PreTrainedViTManager():
 
             test_loss += loss.item()
             test_acc += (output.argmax(dim=1) == labels).sum() / len(labels)
-
-            break
 
         return test_loss / len(dataloader), test_acc / len(dataloader)
 

@@ -14,7 +14,7 @@ def train_mlp(parsed_args):
     
     output_name = f'hnet-{parsed_args.hypernet_layers}' if parsed_args.hypernet_layers else f'fine-tuning.txt'
     np.savetxt(
-        f'experiments/split-mnist/accuracies/{output_name}', task_accuracies_padded, newline="\n")
+        f'experiments/mlp/accuracies/{output_name}', task_accuracies_padded, newline="\n")
 
 
 if __name__ == "__main__":

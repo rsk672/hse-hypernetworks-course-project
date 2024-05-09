@@ -12,14 +12,14 @@ def pretrained_vit_linear_probing(parsed_args):
     task_accuracies_padded = [accs + [0] *
                               (len(task_accuracies[-1]) - len(accs)) for accs in task_accuracies]
 
-    output_name = 'pretrained-vip-hnet-lp' if parsed_args.use_hypernetwork else 'pretrained-vip-lp'
+    output_name = 'pretrained-vip-hnet-lp' if parsed_args.use_hypernetwork else 'pretrained-vit-lp'
 
     if parsed_args.dataset == "cifar10":
         np.savetxt(
-            f'experiments/split-cifar10/accuracies/{output_name}', task_accuracies_padded, newline="\n")
+            f'experiments/pretrained-vit/accuracies/{output_name}-cifar10', task_accuracies_padded, newline="\n")
     else:
         np.savetxt(
-            f'experiments/split-cifar100/accuracies/{output_name}', task_accuracies_padded, newline="\n")
+            f'experiments/pretrained-vit/accuracies/{output_name}-cifar10', task_accuracies_padded, newline="\n")
 
 
 if __name__ == "__main__":

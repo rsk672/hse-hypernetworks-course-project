@@ -6,9 +6,6 @@ import argparse
 def plot_tasks_bar(task_accuracies_path, output_path, title):
     task_accuracies = np.loadtxt(task_accuracies_path).T
 
-    task_labels = ("Learned Task 1", "Learned Task 2",
-                   "Learned Task 3", "Learned Task 4", "Learned Task 5")
-
     tasks = {
         '0-1': task_accuracies[0],
         '2-3': task_accuracies[1],
@@ -17,7 +14,7 @@ def plot_tasks_bar(task_accuracies_path, output_path, title):
         '8-9': task_accuracies[4],
     }
 
-    x = np.arange(1, len(task_labels) + 1)
+    x = np.arange(1, len(tasks) + 1)
     width = 0.2
     multiplier = 0
 

@@ -144,7 +144,7 @@ class MultiHeadSelfAttention(nn.Module):
 
 
 class CustomViT(nn.Module):
-    def __init__(self, num_classes=10, hyper_lp=False, hyper_ffd=False, hyper_attention=False):
+    def __init__(self, num_classes=10, hyper_ln=False, hyper_ffd=False, hyper_attention=False):
         super().__init__()
 
         self.img_size = 32
@@ -174,7 +174,7 @@ class CustomViT(nn.Module):
 
         self.ln = nn.LayerNorm(self.hidden_size)
 
-        if hyper_lp:
+        if hyper_ln:
             self.head = HyperLinear(self.hidden_size, num_classes)
         else:
             self.head = nn.Linear(self.hidden_size, num_classes)

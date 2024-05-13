@@ -45,7 +45,6 @@ class PreTrainedViT(nn.Module):
 
         if predicted_weights is not None:
             output = self.head(features, predicted_weights)
-            print(f'{output.shape=}')
             return self.head(features, predicted_weights)
 
         return self.head(features)

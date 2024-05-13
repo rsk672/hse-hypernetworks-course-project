@@ -33,7 +33,7 @@ if __name__ == "__main__":
         "--hypernet-layers",
         default="",
         type=str,
-        help="layers which weights are predicted by hypernetwork, should be a string of digits between 0 and 2. if not provided, then vanilla fine-tuning will be used")
+        help="layers which weights are predicted by hypernetwork, should be a string of digits between 1 and 3. if not provided, then vanilla last layer fine-tuning will be used")
 
     args.add_argument(
         "-lr",

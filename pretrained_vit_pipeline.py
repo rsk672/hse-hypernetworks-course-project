@@ -19,7 +19,7 @@ def pretrained_vit_linear_probing(parsed_args):
             f'experiments/pretrained-vit/accuracies/{output_name}-cifar10', task_accuracies_padded, newline="\n")
     else:
         np.savetxt(
-            f'experiments/pretrained-vit/accuracies/{output_name}-cifar10', task_accuracies_padded, newline="\n")
+            f'experiments/pretrained-vit/accuracies/{output_name}-cifar100', task_accuracies_padded, newline="\n")
 
 
 if __name__ == "__main__":

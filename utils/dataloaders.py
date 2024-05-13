@@ -42,12 +42,19 @@ def get_split_mnist_dataloaders(batch_size):
     return train_tasks_loaders, test_tasks_loaders
 
 
-def get_split_cifar10_dataloaders(batch_size, image_size=32):
+def get_split_cifar10_dataloaders(batch_size, image_size=32, use_augmentations=False):
 
-    transform = transforms.Compose(
-        [transforms.Resize(image_size),
-         transforms.ToTensor(),
-         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+    if not use_augmentations:
+        transform = transforms.Compose(
+            [transforms.Resize(image_size),
+             transforms.ToTensor(),
+             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+    else:
+        transform = transforms.Compose(
+            [transforms.RandomCrop(32, padding=4),
+             transforms.RandomHorizontalFlip(),
+             transforms.ToTensor(),
+             transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))])
 
     cifar10_train_dataset = datasets.CIFAR10(root='src/data/cifar10', train=True,
                                              download=True, transform=transform)
@@ -87,10 +94,10 @@ def get_split_cifar100_dataloaders(batch_size, image_size=32):
          transforms.ToTensor(),
          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
-    cifar100_train_dataset = datasets.CIFAR10(root='src/data/cifar10', train=True,
+    cifar100_train_dataset = datasets.CIFAR100(root='src/data/cifar100', train=True,
                                               download=True, transform=transform)
 
-    cifar100_test_dataset = datasets.CIFAR10(root='src/data/cifar10', train=False,
+    cifar100_test_dataset = datasets.CIFAR100(root='src/data/cifar100', train=False,
                                              download=True, transform=transform)
 
     train_target_indices = defaultdict(list)

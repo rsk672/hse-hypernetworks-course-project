@@ -10,7 +10,7 @@ from utils.dataloaders import get_split_cifar10_dataloaders
 class ResNetManager():
     def __init__(self, cmd_args):
         self.n_epochs = cmd_args.epochs
-        self.hyper_layers = [int(c) for c in cmd_args.hypernet_layers]
+        self.hyper_layers = [int(c) - 1 for c in cmd_args.hypernet_layers]
         self.lr = cmd_args.learning_rate
         self.beta = cmd_args.beta
         self.batch_size = cmd_args.batch_size

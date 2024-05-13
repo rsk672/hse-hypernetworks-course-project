@@ -12,7 +12,7 @@ def train_resnet(parsed_args):
     task_accuracies_padded = [accs + [0] *
                               (5 - len(accs)) for accs in task_accuracies]
 
-    output_name = f'hnet-{parsed_args.hypernet_layers}' if parsed_args.hypernet_layers else f'fine-tuning.txt'
+    output_name = f'hnet-{parsed_args.hypernet_layers}' if parsed_args.hypernet_layers else f'ln'
     np.savetxt(
         f'experiments/resnet/accuracies/{output_name}', task_accuracies_padded, newline="\n")
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
         "--hypernet-layers",
         default="",
         type=str,
-        help="layers which weights are predicted by hypernetwork, should be a string of digits between 0 and 5. if not provided, then vanilla fine-tuning will be used")
+        help="layers which weights are predicted by hypernetwork, should be a string of digits between 1 and 6. if not provided, then last layer fine-tuning will be used")
 
     args.add_argument(
         "-lr",

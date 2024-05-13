@@ -16,11 +16,11 @@ class CustomViTManager():
         self.batch_size = cmd_args.batch_size
         self.device = cmd_args.device
         self.use_random_embeddings = cmd_args.random_embeddings
-        self.hyper_lp = cmd_args.hyper_linear_probing
+        self.hyper_ln = cmd_args.hyper_linear_probing
         self.hyper_ffd = cmd_args.hyper_feedforward
         self.hyper_attention = cmd_args.hyper_attention
 
-        self.model = CustomViT(10, hyper_lp=self.hyper_lp, hyper_ffd=self.hyper_ffd,
+        self.model = CustomViT(10, hyper_ln=self.hyper_ln, hyper_ffd=self.hyper_ffd,
                                hyper_attention=self.hyper_attention).to(self.device)
 
         self.hnet = HyperNetwork(
